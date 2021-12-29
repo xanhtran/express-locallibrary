@@ -1,22 +1,22 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var catalogRouter = require('./routes/catalog');
-var compression = require('compression');
-var helmet = require('helmet');
-var app = express();
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const catalogRouter = require('./routes/catalog');
+const compression = require('compression');
+const helmet = require('helmet');
+const app = express();
 
 //Set up mongoose connection
-var mongoose = require('mongoose');
-var dev_db_url = 'mongodb+srv://green:mytien@cluster0.bacvb.mongodb.net/myFirstDatabase';//mongodb://localhost:27017/local_library
-// var mongoDB = process.env.MONGODB_URI || dev_db_url
-mongoose.connect(dev_db_url, { useNewUrlParser: true});
-var db = mongoose.connection;
+const mongoose = require('mongoose');
+const dev_db_url = 'mongodb+srv://green:mytien@cluster0.bacvb.mongodb.net/myFirstDatabase';//mongodb://localhost:27017/local_library
+// const mongoDB = process.env.MONGODB_URI || dev_db_url
+mongoose.connect(dev_db_url, { useNewUrlParser: true,useUnifiedTopology: true,});
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
